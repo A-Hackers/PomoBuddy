@@ -1,11 +1,21 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import userRoutes from './routes/users.js'
 
 dotenv.config();
 
+
+const port = process.env.PORT;
+
 const app = express();
-const port = process.env.port
+app.use(express.json());
+app.use(cors());
+
+app.use('/api/user', userRoutes)
+
+
 
 const connectDB = async () => {
     try {
