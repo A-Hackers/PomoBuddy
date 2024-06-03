@@ -1,48 +1,64 @@
 import React, { useEffect, useState } from "react";
 import TimeList from "./TimeList";
+import TimerMenu from "./TimerMenu";
 
 const Timer = () => {
-  const timeList = TimeList();
   const [index, setIndex] = useState(0);
-  const [minutes, setMinutes] = useState(timeList[index].minutes);
-  const [seconds, setSeconds] = useState(timeList[index].seconds);
+  const [minutes, setMinutes] = useState(TimeList[index].minutes);
+  const [seconds, setSeconds] = useState(TimeList[index].seconds);
   const [displayMessage, setDisplayMessage] = useState(false);
+  const [startTimer, setStartTimer] = useState(false);
 
   useEffect(() => {
-    let interval = setInterval(() => {
-      clearInterval(interval);
+    setMinutes(TimeList[index].minutes);
+    setSeconds(TimeList[index].seconds);
+    setDisplayMessage(false);
+  }, [index]);
 
-      if (seconds === 0) {
-        if (minutes !== 0) {
-          setMinutes(minutes - 1);
-          setSeconds(59);
+  useEffect(() => {
+    let interval;
+    if (startTimer) {
+      interval = setInterval(() => {
+        if (seconds === 0) {
+          if (minutes !== 0) {
+            setMinutes(minutes - 1);
+            setSeconds(59);
+          } else {
+            let newMinutes = displayMessage ? 24 : 4;
+            let newSeconds = 59;
+            setMinutes(newMinutes);
+            setSeconds(newSeconds);
+            setDisplayMessage(!displayMessage);
+          }
         } else {
-          let minutes = displayMessage ? 24 : 4;
-          let seconds = 59;
-
-          setMinutes(minutes);
-          setSeconds(seconds);
-          setDisplayMessage(!displayMessage);
+          setSeconds(seconds - 1);
         }
-      } else {
-        setSeconds(seconds - 1);
-      }
-    }, 1000);
-  }, [displayMessage, minutes, seconds]);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [startTimer, displayMessage, minutes, seconds]);
 
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
   return (
-    <div>
-      <div className="bg-gray-700 py-5">
-        <div className="flex justify-center ">
-          <div>{displayMessage && timeList[index].displayMessage}</div>
-          <div className="text-9xl font-bold">
+    <div className="items-center justify-center flex">
+      <div className="border border-solid border-cardborder shadow-cardshadow bg-cardcolor rounded-2xl backdrop-blur-cardblur w-5/6 md:w-2/6 bg-opacity-30 grid justify-center ">
+        <TimerMenu index={index} setIndex={setIndex} />
+        <div className="flex justify-center">
+          <div className="">
+            {displayMessage}
+          </div>
+          <div className="text-8xl font-bold py-10 mx-auto text-timercolor">
             {timerMinutes}:{timerSeconds}
           </div>
         </div>
-        <button className="bg-slate-500 justify-center flex">apples</button>
+        <button
+          className="bg-slate-500 rounded-3xl w-3/6 py-2 mx-auto my-20"
+          onClick={() => setStartTimer((prev) => !prev)}
+        >
+          {startTimer ? "Stop" : "Start"} Timer
+        </button>
       </div>
     </div>
   );

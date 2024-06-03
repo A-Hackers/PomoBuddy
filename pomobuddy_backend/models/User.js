@@ -4,7 +4,6 @@ import validator from 'validator';
 import e from "express";
 
 const UserSchema = new Schema({
-    name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true }
 });
