@@ -1,5 +1,5 @@
 import "./index.css";
-import TimerPage from "./pages/TimerPage.jsx";
+import TimerPage from "./pages/TimerPage";
 
 const App = () => {
   return (

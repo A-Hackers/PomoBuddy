@@ -8,7 +8,7 @@ const TimerPage = () => {
       <div className="items-center h-screen bg-background-gradient">
         <Timer />
       </div>
-      <style jsx>{`
+      <style>{`
         .bg-background-gradient {
           background: rgb(4, 20, 72);
           background: -moz-radial-gradient(

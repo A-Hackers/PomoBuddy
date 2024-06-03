@@ -9,18 +9,18 @@ const TimerMenu = ({ index, setIndex }) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="relative flex justify-center pt-6">
       <button
         onClick={toggleDropdown}
-        className="bg-blue-200 font-semibold justify-center rounded-lg inline-flex items-center px-4 py-2"
+        className="bg-blue-200 font-semibold justify-center rounded-lg inline-flex items-center py-2 px-4"
       >
         {TimeList[index].displayMessage}
       </button>
       {isOpen && (
-        <div className="flex flex-col bg-white rounded-lg">
+        <div className="flex flex-col bg-white rounded-lg absolute mt-2">
           {TimeList.map((item, idx) => (
             <button
-              className="justify-center font-semibold gap-4 px-4 py-2"
+              className="w-full py-1 px-1 justify-center font-semibold"
               key={idx}
               onClick={() => {
                 toggleDropdown();
