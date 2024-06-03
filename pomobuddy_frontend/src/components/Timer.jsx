@@ -8,6 +8,13 @@ const Timer = () => {
   const [seconds, setSeconds] = useState(TimeList[index].workSeconds);
   const [displayMessage, setDisplayMessage] = useState(false);
   const [startTimer, setStartTimer] = useState(false);
+  const [motivationMessage, setMotivationMessage] = useState("");
+
+  const motivationalMessages = [
+    "May the force be with you",
+    "Every step is progress!",
+    "Just do it",
+  ];
 
   useEffect(() => {
     setMinutes(TimeList[index].workMinutes);
@@ -24,6 +31,10 @@ const Timer = () => {
             setMinutes(minutes - 1);
             setSeconds(59);
           } else {
+            if (!displayMessage) {
+              const randomMessage = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+              setMotivationMessage(randomMessage);
+            }
             let newMinutes = displayMessage
               ? TimeList[index].workMinutes
               : TimeList[index].breakMinutes;
@@ -40,14 +51,15 @@ const Timer = () => {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [startTimer, displayMessage, minutes, seconds, index]);
+  }, [startTimer, displayMessage, minutes, seconds, index, motivationalMessages]);
 
   const handleIndexChange = (newIndex) => {
     if (newIndex !== index) {
       setIndex(newIndex);
-      setStartTimer(startTimer ? !startTimer : startTimer);
+      setStartTimer(false); 
     }
   };
+
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
@@ -55,8 +67,12 @@ const Timer = () => {
     <div className="items-center justify-center flex min-h-screen">
       <div className="border border-solid border-cardborder shadow-cardshadow bg-cardcolor rounded-2xl backdrop-blur-cardblur w-5/6 md:w-2/6 bg-opacity-30 grid justify-center ">
         <TimerMenu index={index} setIndex={handleIndexChange} />
-        <div className="flex justify-center">
-          <div className="">{displayMessage}</div>
+        <div className="flex justify-center flex-col items-center">
+          {displayMessage && (
+            <div className="text-8l font-semibold py-10 mx-auto text-timercolor text-opacity-90">
+              {motivationMessage}
+            </div>
+          )}
           <div className="text-8xl font-semibold py-10 mx-auto text-timercolor text-opacity-90">
             {timerMinutes}:{timerSeconds}
           </div>
