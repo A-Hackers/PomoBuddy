@@ -4,14 +4,14 @@ import TimerMenu from "./TimerMenu";
 
 const Timer = () => {
   const [index, setIndex] = useState(0);
-  const [minutes, setMinutes] = useState(TimeList[index].minutes);
-  const [seconds, setSeconds] = useState(TimeList[index].seconds);
+  const [minutes, setMinutes] = useState(TimeList[index].workMinutes);
+  const [seconds, setSeconds] = useState(TimeList[index].workSeconds);
   const [displayMessage, setDisplayMessage] = useState(false);
   const [startTimer, setStartTimer] = useState(false);
 
   useEffect(() => {
-    setMinutes(TimeList[index].minutes);
-    setSeconds(TimeList[index].seconds);
+    setMinutes(TimeList[index].workMinutes);
+    setSeconds(TimeList[index].workSeconds);
     setDisplayMessage(false);
   }, [index]);
 
@@ -24,8 +24,12 @@ const Timer = () => {
             setMinutes(minutes - 1);
             setSeconds(59);
           } else {
-            let newMinutes = displayMessage ? 24 : 4;
-            let newSeconds = 59;
+            let newMinutes = displayMessage
+              ? TimeList[index].workMinutes
+              : TimeList[index].breakMinutes;
+            let newSeconds = displayMessage
+              ? TimeList[index].workSeconds
+              : TimeList[index].breakSeconds;
             setMinutes(newMinutes);
             setSeconds(newSeconds);
             setDisplayMessage(!displayMessage);
@@ -36,10 +40,10 @@ const Timer = () => {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [startTimer, displayMessage, minutes, seconds]);
+  }, [startTimer, displayMessage, minutes, seconds, index]);
 
   const handleIndexChange = (newIndex) => {
-    if (newIndex != index) {
+    if (newIndex !== index) {
       setIndex(newIndex);
       setStartTimer(startTimer ? !startTimer : startTimer);
     }

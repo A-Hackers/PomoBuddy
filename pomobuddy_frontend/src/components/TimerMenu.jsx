@@ -14,7 +14,7 @@ const TimerMenu = ({ index, setIndex }) => {
         onClick={toggleDropdown}
         className="bg-blue-200 font-semibold justify-center rounded-lg inline-flex items-center py-2 px-4"
       >
-        {TimeList[index].displayMessage}
+        {TimeList[index].modeName}
       </button>
       {isOpen && (
         <div className="flex flex-col bg-white rounded-lg absolute mt-2">
@@ -27,7 +27,7 @@ const TimerMenu = ({ index, setIndex }) => {
                 setIndex(idx);
               }}
             >
-              {item.displayMessage}
+              {item.modeName}
             </button>
           ))}
         </div>
