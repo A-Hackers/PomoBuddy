@@ -32,7 +32,10 @@ const Timer = () => {
             setSeconds(59);
           } else {
             if (!displayMessage) {
-              const randomMessage = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+              const randomMessage =
+                motivationalMessages[
+                  Math.floor(Math.random() * motivationalMessages.length)
+                ];
               setMotivationMessage(randomMessage);
             }
             let newMinutes = displayMessage
@@ -51,12 +54,19 @@ const Timer = () => {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [startTimer, displayMessage, minutes, seconds, index, motivationalMessages]);
+  }, [
+    startTimer,
+    displayMessage,
+    minutes,
+    seconds,
+    index,
+    motivationalMessages,
+  ]);
 
   const handleIndexChange = (newIndex) => {
     if (newIndex !== index) {
       setIndex(newIndex);
-      setStartTimer(false); 
+      setStartTimer(false);
     }
   };
 
@@ -67,21 +77,23 @@ const Timer = () => {
     <div className="items-center justify-center flex min-h-screen">
       <div className="border border-solid border-cardborder shadow-cardshadow bg-cardcolor rounded-2xl backdrop-blur-cardblur w-5/6 md:w-2/6 bg-opacity-30 grid justify-center ">
         <TimerMenu index={index} setIndex={handleIndexChange} />
-        <div className="flex justify-center flex-col items-center">
+        <div className="flex justify-center flex-col items-center pt-0 ">
           {displayMessage && (
             <div className="text-8l font-semibold py-10 mx-auto text-timercolor text-opacity-90">
               {motivationMessage}
             </div>
           )}
-          <div className="text-8xl font-semibold py-10 mx-auto text-timercolor text-opacity-90">
+          <div className="text-8xl font-semibold mt-10 mx-auto text-timercolor text-opacity-90">
             {timerMinutes}:{timerSeconds}
           </div>
         </div>
         <button
-          className="bg-slate-500 rounded-3xl w-40 py-2 mx-auto my-20"
+          className="bg-gradient-to-r from-cyan-500 to-blue-500 drop-shadow-lg rounded-3xl w-40 py-3 mx-auto my-20"
           onClick={() => setStartTimer((prev) => !prev)}
         >
-          {startTimer ? "Stop" : "Start"} Timer
+          <div className="text-lg font-medium">
+            {startTimer ? "Stop" : "Start"} Timer
+          </div>
         </button>
       </div>
     </div>
