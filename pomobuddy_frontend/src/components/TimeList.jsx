@@ -18,9 +18,9 @@ const TimeList = [
   {
     modeName: "Bananas",
     workMinutes: 0,
-    workSeconds: 31,
+    workSeconds: 5,
     breakMinutes: 0,
-    breakSeconds: 32,
+    breakSeconds: 5,
     displayMessage: "Bananas",
   },
 ];

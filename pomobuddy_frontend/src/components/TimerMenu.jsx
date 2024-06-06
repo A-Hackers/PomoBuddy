@@ -9,10 +9,10 @@ const TimerMenu = ({ index, setIndex }) => {
   };
 
   return (
-    <div className="relative flex justify-center pt-6">
+    <div className="relative flex justify-center">
       <button
         onClick={toggleDropdown}
-        className="bg-blue-200 font-semibold justify-center rounded-lg inline-flex items-center py-2 px-4"
+        className="bg-blue-200 font-semibold justify-center rounded-lg inline-flex items-center py-1 px-4"
       >
         {TimeList[index].modeName}
       </button>
