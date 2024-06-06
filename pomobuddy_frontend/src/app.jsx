@@ -1,10 +1,9 @@
-import "./index.css";
-import TimerPage from "./pages/TimerPage";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => {
   return (
     <div>
-      <TimerPage />
+      <LoginPage />
     </div>
   );
 };
