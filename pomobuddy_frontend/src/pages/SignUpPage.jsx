@@ -48,7 +48,7 @@ const SignUpPage = () => {
             </button>
           </div>
         </form>
-        <Link to="/LoginPage">Move to Login Page</Link>
+        <Link to="/pages/LoginPage">Move to Login Page</Link>
       </div>
     </div>
   );

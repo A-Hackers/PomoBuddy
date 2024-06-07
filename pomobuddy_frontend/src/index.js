@@ -8,8 +8,8 @@ import SignUpPage from "./pages/SignUpPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
-  { path: "/LoginPage", element: <LoginPage /> },
-  { path: "/SignPage", element: <SignUpPage /> },
+  { path: "/pages/LoginPage", element: <LoginPage /> },
+  { path: "/pages/SignUpPage", element: <SignUpPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
