@@ -1,8 +1,17 @@
-import React from "react";
-import Timer from "../components/Timer";
-import TodoList from "../components/TodoList";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Timer from '../components/Timer';
 
 const TimerPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
+
   return (
     <div>
       <div className="items-center h-screen bg-background-gradient">
