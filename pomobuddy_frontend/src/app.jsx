@@ -1,9 +1,10 @@
 import LoginPage from "./pages/LoginPage";
+import TimerPage from "./pages/TimerPage";
 
 const App = () => {
   return (
     <div>
-      <LoginPage />
+      <TimerPage />
     </div>
   );
 };
