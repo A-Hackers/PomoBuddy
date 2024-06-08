@@ -12,12 +12,12 @@ const TimerMenu = ({ index, setIndex }) => {
     <div className="relative flex justify-center">
       <button
         onClick={toggleDropdown}
-        className="bg-blue-200 font-semibold justify-center rounded-lg inline-flex items-center py-1 px-4"
+        className="bg-blue-200 font-semibold justify-center rounded-lg inline-flex items-center py-1 px-4 w-[200px]"
       >
         {TimeList[index].modeName}
       </button>
       {isOpen && (
-        <div className="flex flex-col bg-white rounded-lg absolute mt-2">
+        <div className="flex flex-col bg-white rounded-lg absolute mt-[40px]">
           {TimeList.map((item, idx) => (
             <button
               className="w-full py-1 px-1 justify-center font-semibold"

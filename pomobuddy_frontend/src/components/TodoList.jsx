@@ -35,19 +35,19 @@ const TodoList = () => {
   };
 
   return (
-    <div className="max-w-sm p-6 timer-list bg-cardcolor text-white rounded-lg shadow-md">
+    <div className="max-w-sm text-center p-6 timer-list bg-cardcolor text-[#f2f2f2] rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">To-do List</h1>
       <div className="mb-4">
         <input
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          className="w-full p-2 border border-gray-600 bg-gray-700 text-white rounded mb-2"
+          className="w-full p-2 border border-gray-600 bg-[#1A213D] text-[#f2f2f2] rounded mb-2"
           placeholder="Add a new task"
         />
         <button
           onClick={handleAddTodo}
-          className="w-full py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          className="w-full py-2 bg-gradient-to-tr from-green-600 to-green-400 text-[#f2f2f2] rounded"
         >
           Add
         </button>
@@ -56,7 +56,7 @@ const TodoList = () => {
         {todos.map((todo, index) => (
           <li
             key={index}
-            className="flex items-center justify-between mb-2 p-2 bg-gray-700 rounded"
+            className="flex items-center justify-between mb-2 p-2 bg-[#222741] rounded"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
           >
