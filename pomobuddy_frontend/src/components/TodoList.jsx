@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
@@ -36,7 +35,7 @@ const TodoList = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto p-6 bg-gray-800 text-white rounded-lg shadow-md">
+    <div className="max-w-sm p-6 timer-list bg-cardcolor text-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">To-do List</h1>
       <div className="mb-4">
         <input
@@ -114,6 +113,9 @@ const TodoList = () => {
 
         .custom-checkbox:hover {
           background-color: #374151;
+        }
+        .timer-list {
+          border: 2px rgba(19, 27, 144, 0.28) solid;
         }
       `}</style>
     </div>
