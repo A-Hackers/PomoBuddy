@@ -17,7 +17,7 @@ const TimerMenu = ({ index, setIndex }) => {
         {TimeList[index].modeName}
       </button>
       {isOpen && (
-        <div className="flex flex-col bg-white rounded-lg absolute mt-[40px]">
+        <div className="flex flex-col bg-white rounded-lg absolute mt-[40px] w-[200px]">
           {TimeList.map((item, idx) => (
             <button
               className="w-full py-1 px-1 justify-center font-semibold"
