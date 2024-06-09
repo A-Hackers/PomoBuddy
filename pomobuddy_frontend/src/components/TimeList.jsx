@@ -16,12 +16,12 @@ const TimeList = [
     displayMessage: "Apple Juice",
   },
   {
-    modeName: "Bananas",
+    modeName: "Bananasadasdasdasdasdasdasdasd",
     workMinutes: 0,
     workSeconds: 5,
     breakMinutes: 0,
     breakSeconds: 5,
-    displayMessage: "Bananas",
+    displayMessage: "Banana",
   },
 ];
 
