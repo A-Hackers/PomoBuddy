@@ -21,7 +21,6 @@ const TimerMenu = ({ index, setIndex }) => {
           {TimeList.map((item, idx) => (
             <button
               className="w-full py-1 px-4 justify-center font-semibold overflow-hidden whitespace-nowrap text-ellipsis"
-              className="font-semibold w-[200px] py-2"
               key={idx}
               onClick={() => {
                 toggleDropdown();
