@@ -95,42 +95,40 @@ const Timer = () => {
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
   return (
-    <div className="items-center justify-center flex h-full">
-      <div className="timer-card shadow-cardshadow bg-cardcolor rounded-2xl backdrop-blur-cardblur lg:h-[42.688rem] lg:w-[28.75rem] bg-opacity-30 grid justify-center">
-        <div className="pt-10 w-full">
-          <TimerMenu index={index} setIndex={handleIndexChange} />
+    <div className="timer-card shadow-cardshadow bg-cardcolor rounded-2xl backdrop-blur-cardblur lg:h-[42.688rem] lg:w-[28.75rem] w-4/5 bg-opacity-30 grid justify-center">
+      <div className="pt-10">
+        <TimerMenu index={index} setIndex={handleIndexChange} />
+      </div>
+      <div className="flex justify-start flex-col items-center pt-0 mb-5 w-full">
+        {displayMessage && (
+          <div className="text-lg sm:text-xl md:text-2xl font-semibold py-5 text-center text-timercolor text-opacity-90">
+            {motivationMessage}
+          </div>
+        )}
+        <div className="flex items-center select-none mb-6">
+          <FontAwesomeIcon
+            icon={faMinus}
+            className="h-6 w-6 text-white cursor-pointer"
+            onClick={handleDecreaseTimer}
+          />
+          <div className="text-6xl lg:h-[100px] sm:text-8xl font-normal mx-auto text-timercolor text-opacity-90 px-1 md:px-3">
+            {timerMinutes}:{timerSeconds}
+          </div>
+          <FontAwesomeIcon
+            icon={faPlus}
+            className="h-6 w-6 text-white cursor-pointer"
+            onClick={handleIncreaseTimer}
+          />
         </div>
-        <div className="flex justify-start flex-col items-center pt-0 mb-5 w-full">
-          {displayMessage && (
-            <div className="text-lg sm:text-xl md:text-2xl font-semibold py-5 text-center text-timercolor text-opacity-90">
-              {motivationMessage}
+        <div className="pb-10">
+          <button
+            className="start-timer-btn bg-gradient-to-r from-cyan-500 to-blue-500 drop-shadow-lg rounded-2xl w-[16rem] h-[50px] py-3"
+            onClick={() => setStartTimer((prev) => !prev)}
+          >
+            <div className="text-md sm:text-lg md:text-xl font-medium">
+              {startTimer ? "Stop" : "Start"} Timer
             </div>
-          )}
-          <div className="flex items-center select-none mb-6">
-            <FontAwesomeIcon
-              icon={faMinus}
-              className="h-6 w-6 text-white cursor-pointer"
-              onClick={handleDecreaseTimer}
-            />
-            <div className="text-4xl lg:h-[100px] sm:text-6xl md:text-8xl font-normal mx-auto text-timercolor text-opacity-90 px-1 md:px-3">
-              {timerMinutes}:{timerSeconds}
-            </div>
-            <FontAwesomeIcon
-              icon={faPlus}
-              className="h-6 w-6 text-white cursor-pointer"
-              onClick={handleIncreaseTimer}
-            />
-          </div>
-          <div className="flex justify-center pb-10 w-full">
-            <button
-              className="start-timer-btn bg-gradient-to-r from-cyan-500 to-blue-500 drop-shadow-lg rounded-2xl w-[16rem] h-[50px] py-3"
-              onClick={() => setStartTimer((prev) => !prev)}
-            >
-              <div className="text-md sm:text-lg md:text-xl font-medium">
-                {startTimer ? "Stop" : "Start"} Timer
-              </div>
-            </button>
-          </div>
+          </button>
         </div>
       </div>
       <style>

@@ -5,15 +5,15 @@ import TodoList from "../components/TodoList";
 const TimerPage = () => {
   return (
     <div className="h-screen flex items-center justify-center bg-background-gradient">
-      <div className="grid grid-cols-3 gap-0 items-start">
-        <div className="self-start">
-          <TodoList />
-        </div>
-        <div className="flex justify-center">
+      <div className="lg:grid-cols-3 grid grid-cols-1 gap-0 items-start w-full ">
+        <div className="items-center justify-center flex order-1 lg:order-2">
           <Timer />
         </div>
-        <div></div>
+        <div className="lg:justify-end flex justify-center order-2 lg:order-1 mt-5 lg:mt-0">
+          <TodoList />
+        </div>
       </div>
+
       <style>{`
     .bg-background-gradient {
       background: rgb(4, 20, 72);

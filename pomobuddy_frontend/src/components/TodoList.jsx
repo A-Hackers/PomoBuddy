@@ -35,7 +35,7 @@ const TodoList = () => {
   };
 
   return (
-    <div className="max-w-sm text-center p-6 timer-list bg-cardcolor text-[#f2f2f2] rounded-lg shadow-md">
+    <div className="lg:w-2/3 w-5/6 text-center p-6 timer-list bg-cardcolor text-white rounded-lg shadow-md overflow-y-auto">
       <h1 className="text-2xl font-bold mb-4">To-do List</h1>
       <div className="mb-4">
         <input
