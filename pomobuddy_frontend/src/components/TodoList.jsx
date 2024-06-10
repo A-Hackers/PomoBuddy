@@ -86,7 +86,7 @@ const TodoList = () => {
           </li>
         ))}
       </ul>
-      <style jsx>{`
+      <style>{`
         .custom-checkbox {
           appearance: none;
           width: 1.5em;

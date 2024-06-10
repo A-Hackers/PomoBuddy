@@ -139,7 +139,7 @@ const Timer = () => {
           .timer-card {
             border: 2px rgba(19, 27, 144, 0.28) solid;
           }
-          `}
+        `}
       </style>
     </div>
   );

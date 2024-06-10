@@ -1,8 +1,18 @@
 import React from "react";
 import Timer from "../components/Timer";
 import TodoList from "../components/TodoList";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const TimerPage = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   return (
     <div className="h-screen flex items-center justify-center bg-background-gradient">
       <div className="lg:grid-cols-3 grid grid-cols-1 gap-0 items-start w-full ">

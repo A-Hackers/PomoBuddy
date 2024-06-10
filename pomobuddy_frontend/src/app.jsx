@@ -4,7 +4,7 @@ import TimerPage from "./pages/TimerPage";
 const App = () => {
   return (
     <div>
-      <TimerPage />
+      <LoginPage />
     </div>
   );
 };
