@@ -1,10 +1,14 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
+import mongoose from "mongoose";
 
 const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  modeList: [
+    { type: mongoose.Schema.Types.ObjectId, ref: "TimeMode", default: [] },
+  ],
 });
 
 // signup
@@ -21,6 +25,7 @@ UserSchema.statics.signup = async function (email, password) {
   const hash = await bcrypt.hash(password, salt);
 
   const user = await this.create({ email, password: hash });
+
   return user;
 };
 
