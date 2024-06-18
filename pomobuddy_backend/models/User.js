@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
 import mongoose from "mongoose";
+import TimeMode from "./TimeMode.js";
 
 const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
