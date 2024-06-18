@@ -26,7 +26,36 @@ UserSchema.statics.signup = async function (email, password) {
   const hash = await bcrypt.hash(password, salt);
 
   const user = await this.create({ email, password: hash });
+  const defaultTimeList = [
+    {
+      modeName: "Pomodoro",
+      workMinutes: 25,
+      workSeconds: 0,
+      breakMinutes: 5,
+      breakSeconds: 0,
+      displayMessage: "Pomodoro",
+    },
+    {
+      modeName: "Apple Juice",
+      workMinutes: 10,
+      workSeconds: 0,
+      breakMinutes: 3,
+      breakSeconds: 0,
+      displayMessage: "Apple Juice",
+    },
+    {
+      modeName: "Bananasadasdasdasdasdasdasdasd",
+      workMinutes: 0,
+      workSeconds: 5,
+      breakMinutes: 0,
+      breakSeconds: 5,
+      displayMessage: "Banana",
+    },
+  ];
 
+  const createdTimeModes = await TimeMode.insertMany(defaultTimeList);
+  user.modeList.push(...createdTimeModes);
+  await user.save();
   return user;
 };
 
