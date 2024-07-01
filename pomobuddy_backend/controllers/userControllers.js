@@ -12,8 +12,10 @@ export const signupUser = async (req, res) => {
   try {
     const user = await User.signup(email, password);
     const token = createToken(user._id);
+    console.log("Generated token:", token);
     res.status(200).json({ email, token });
   } catch (err) {
+    console.error("Login error:", err.message);
     res.status(400).json({ error: err.message });
   }
 };
@@ -26,6 +28,15 @@ export const loginUser = async (req, res) => {
     const user = await User.login(email, password);
     const token = createToken(user._id);
     res.status(200).json({ email, token });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
